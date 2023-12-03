@@ -10,4 +10,4 @@ Pig is a simple dice game that can be played by two people.
  
 > Diff Pig game Demo:  
 
-![](https://github.com/nasser-hadi/diff-pig-game/blob/main/diff-pig-game.gif)
+![](https://github.com/nasser-hadi/diff-pig-game/blob/master/diff-pig-game.gif)    
