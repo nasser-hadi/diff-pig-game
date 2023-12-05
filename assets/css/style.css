@@ -11,7 +11,7 @@ main {}
 
 .grid-container {
     width: 100%;
-    height: 100vh;
+    height: 100vh; 
 
     display: grid;
 
@@ -23,14 +23,17 @@ main {}
         "footer      footer   footer footer  footer";
 }
 
+/* nav area */
 #sec_1 {
     grid-area: nav;
 }
 
+/* margin-left area */
 #sec_2 {
     grid-area: margin-left;
 }
 
+/* setting area */
 #sec_3 {
     grid-area: setting;
 
@@ -39,10 +42,12 @@ main {}
     background-color: rgb(69, 131, 158);
 }
 
+/* space area */
 #sec_4 {
     grid-area: space
 }
 
+/* The player area contains: the player-1 & middle & player-2 areas. */
 #sec_5 {
     grid-area: player;
 
@@ -62,6 +67,7 @@ main {}
     grid-template-areas: "player-1  middle  player-2";
 }
 
+/* player-1 area*/
 #sec_5-1 {
     grid-area: player-1;
     
@@ -75,6 +81,7 @@ main {}
     align-items: center;
 }
 
+/* middle area */
 #sec_5-2 {
     grid-area: middle;
 
@@ -84,6 +91,7 @@ main {}
     box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.7), 0 6px 20px 0 rgba(0, 0, 0, 0.7);
 }
 
+/* player-2 area */
 #sec_5-3 {
     grid-area: player-2;
 
@@ -97,10 +105,12 @@ main {}
     align-items: center;
 }
 
+/* margin-right area */
 #sec_6 {
     grid-area: margin-right;
 }
 
+/* footer area */
 #sec_7 {
     grid-area: footer;
 }
@@ -177,6 +187,7 @@ main {}
     font-size: 35px;
 }
 
+/* begin turn text style */
 #won_1,
 #won_2 {
     font-size: 25px;
@@ -189,7 +200,6 @@ main {}
     animation-duration: 3s;
     animation-iteration-count: 1000;
     animation-delay: 1s;
-
 }
 
 @keyframes turn-text {
@@ -202,6 +212,12 @@ main {}
     }
 }
 
+/* end of turn text style */
+
+
+/* begin spin dice style */
+
+/* dice image */
 #img_dice {
     width: 50px;
     height: 50px;
@@ -231,3 +247,5 @@ main {}
         transform: rotate(720deg);
     }
 }
+
+/* end of spin dice style */

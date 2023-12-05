@@ -5,6 +5,10 @@ var activePlayer = 1;
 var gameSet = 0;
 const maxScore = 100;
 
+//The game isn't started => statue = 0
+//The game is in progress => status = 1
+//The game is over => status = 2
+
 let gameStatus = 0;
 
 let dice_number = 0;
@@ -13,6 +17,8 @@ const img_dice = document.querySelector('#img_dice');
 const btn_dice = document.querySelector('#btn_dice');
 const btn_hold = document.querySelector('#btn_hold');
 
+//When the Start button is pressed and the game starts
+//or when New Game button is pressed between or end of the current game 
 document.querySelector('#btn_start').addEventListener('click', function () {
 
     gameScores = [0, 0];
@@ -29,6 +35,7 @@ document.querySelector('#btn_start').addEventListener('click', function () {
     btn_hold.classList.add('disabled');
     btn_hold.disabled = false;
 
+    //Set the image of the Dice element to 1
     img_dice.src = "assets/images/dice-1.png";
 
     document.querySelector('#sec_5-1').classList.add('active');
@@ -46,17 +53,21 @@ document.querySelector('#btn_start').addEventListener('click', function () {
     document.getElementById('game_score_1').innerHTML = "0";
     document.getElementById('game_score_2').innerHTML = "0";
 
+    //start game
     if (gameStatus == 0) {
         gameStatus = 1;
         this.innerHTML = 'New Game';
     }
+    //new game
     else if (gameStatus == 1) {
     }
+    //game over
     else if (gameStatus == 2) {
         gameStatus = 1;
     }
 });
 
+//When the Dice button is pressed
 btn_dice.addEventListener('click', function () {
 
     btn_dice.classList.add('disabled');
@@ -66,9 +77,12 @@ btn_dice.addEventListener('click', function () {
 
     img_dice.classList.add('spin');
 
+    //This function works after 1000 mili second
     setTimeout(function () {
+        //Call the rollingDice function and get a randome number between 1 ~ 6
         dice_number = rollingDice();
 
+        //Set the image of the Dice element equal dice number
         img_dice.src = "assets/images/dice-" + dice_number + ".png";
 
         img_dice.classList.remove('spin');
@@ -80,10 +94,13 @@ btn_dice.addEventListener('click', function () {
 
         if (dice_number != 1) {
 
+            //Add dice number to roundScore variable
             roundScore += dice_number;
 
+            //Display round score to user in HTML element
             document.getElementById('set_score_' + activePlayer).innerHTML = roundScore;
 
+            //Check the game score every time
             if ((gameScores[activePlayer - 1] + roundScore) >= maxScore) {
 
                 gameScores[activePlayer - 1] += roundScore;
@@ -98,12 +115,13 @@ btn_dice.addEventListener('click', function () {
     }, 1000);
 });
 
+//When the game is over
 function gameOver() {
     gameStatus = 2;
 
     btn_dice.classList.add('disabled');
     btn_dice.desabled = true;
-    
+
     document.querySelector('#sec_5-1').classList.remove('active');
     document.querySelector('#sec_5-3').classList.remove('active');
 
@@ -113,6 +131,7 @@ function gameOver() {
     document.getElementById('won_' + activePlayer).classList.remove('hidden');
 }
 
+//When the Hold button is pressed.
 document.querySelector('#btn_hold').addEventListener('click', function () {
     if (gameStatus == 1) {
         changePlayer();
@@ -127,6 +146,7 @@ document.querySelector('#btn_hold').addEventListener('click', function () {
 });
 
 
+//This function changes the current player. When the Hold button is pressed or the dice becomes 1.
 function changePlayer() {
 
     gameScores[activePlayer - 1] += roundScore;
@@ -148,10 +168,12 @@ function changePlayer() {
     btn_hold.classList.add('disabled');
     btn_hold.disabed = true;
 
+    //When changePlayer function called by Hold button
     roundScore = 0;
     img_dice.src = "assets/images/dice-1.png";
 }
 
+//This function implement a real Dice and generate a random number between 1 ~ 6 
 function rollingDice() {
 
     var rand = Math.floor(Math.random() * 6) + 1;
@@ -159,8 +181,9 @@ function rollingDice() {
     return rand;
 }
 
-function calculationGameSet(m) {    
-    let d_r = 0;
+//Calculate Set number of game
+function calculationGameSet(m) {
+    let d_r = 0;// d_r = Division Remainder
     let setNumber = 0;
 
     d_r = (m % 2);
