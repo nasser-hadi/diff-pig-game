@@ -3,11 +3,16 @@ var gameScores = [0, 0];
 var roundScore = 0;
 var activePlayer = 1;
 var gameSet = 0;
-const maxScore = 100;
+let maxScore;
+
+let inputValue = document.getElementById('end-score');
+//  inputValue.defaultValue=50;
 
 //The game isn't started => statue = 0
 //The game is in progress => status = 1
 //The game is over => status = 2
+
+inputValue.value = 20;
 
 let gameStatus = 0;
 
@@ -26,6 +31,9 @@ document.querySelector('#btn_start').addEventListener('click', function () {
     activePlayer = 1;
 
     gameSet = 1;
+
+    maxScore = inputValue.value;
+    inputValue.disabled = true;
 
     calculationGameSet(gameSet);
 
@@ -86,7 +94,6 @@ btn_dice.addEventListener('click', function () {
         img_dice.src = "assets/images/dice-" + dice_number + ".png";
 
         img_dice.classList.remove('spin');
-
         btn_dice.classList.remove('disabled');
         btn_dice.disabed = false;
         btn_hold.classList.remove('disabled');
@@ -121,6 +128,8 @@ function gameOver() {
 
     btn_dice.classList.add('disabled');
     btn_dice.desabled = true;
+
+    inputValue.disabled = false;
 
     document.querySelector('#sec_5-1').classList.remove('active');
     document.querySelector('#sec_5-3').classList.remove('active');
