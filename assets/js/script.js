@@ -85,7 +85,7 @@ btn_dice.addEventListener('click', function () {
 
     img_dice.classList.add('spin');
 
-    //This function works after 1000 mili second
+    //This function works after 1000 mili seconds
     setTimeout(function () {
         //Call the rollingDice function and get a randome number between 1 ~ 6
         dice_number = rollingDice();
