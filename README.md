@@ -6,7 +6,7 @@ Pig is a simple dice game that can be played by two people.
 * The game goes on until the rolled dice is 1 or "Player 1" presses the Hold button.  
 * If the dice rolled is 1, your set score is zero and it's the next player's turn.  
 * But if you press the Hold button, your Set Score will be added to the total score of the game and then it's the next player's turn.  
-* ​The game continues until a player's score reaches 100.  
+* ​The game continues until a player's score reaches the final score (between 20 and 150).
  
 > Diff Pig game Demo:  
 
